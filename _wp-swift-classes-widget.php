@@ -16,10 +16,12 @@
 			?>
 			<ul>
 				<?php
-			    while ( have_posts() ) : the_post();                        
-			        ?>
-			            <li><a href="<?php the_permalink() ?>"><?php the_title() ?></a></li>
-			        <?php 
+			    while ( have_posts() ) : the_post(); 
+			    	$teacher = '';  
+			    	if( get_field('teacher') ) {
+	                 	$teacher = " <small>(".get_field('teacher').")</small>";
+	                }                     
+			        ?><li><a href="<?php the_permalink() ?>"><?php the_title(); echo $teacher; ?></a></li><?php 
 			    endwhile; 
 				?>
 			</ul>
